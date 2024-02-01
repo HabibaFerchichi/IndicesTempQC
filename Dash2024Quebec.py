@@ -473,7 +473,6 @@ col5 = st.columns(1)
 with col5[0]:
     st.subheader("Proprietés du régime thermique pour l'année sélectionnée")
     st.plotly_chart(fig_final,use_container_width=True)
-)
 with col5[0]:
     with st.expander("Afficher Données"):
         st.write(gauss_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
