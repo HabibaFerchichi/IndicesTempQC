@@ -14,34 +14,34 @@ from PIL import Image
 import hmac
 import streamlit as st
 ####### Add global password #################################
-# def check_password():
-#     """Returns `True` if the user had the correct password."""
+def check_password():
+    """Returns `True` if the user had the correct password."""
 
-#     def password_entered():
-#         """Checks whether a password entered by the user is correct."""
-#         if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
-#             st.session_state["password_correct"] = True
-#             del st.session_state["password"]  # Don't store the password.
-#         else:
-#             st.session_state["password_correct"] = False
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password.
+        else:
+            st.session_state["password_correct"] = False
 
-#     # Return True if the passward is validated.
-#     if st.session_state.get("password_correct", False):
-#         return True
+    # Return True if the passward is validated.
+    if st.session_state.get("password_correct", False):
+        return True
 
-#     # Show input for password.
-#     st.text_input(
-#         "Password", type="password", on_change=password_entered, key="password"
-#     )
-#     if "password_correct" in st.session_state:
-#         st.error("😕 Password incorrect")
-#     return False
+    # Show input for password.
+    st.text_input(
+        "Password", type="password", on_change=password_entered, key="password"
+    )
+    if "password_correct" in st.session_state:
+        st.error("😕 Password incorrect")
+    return False
 
 
-# if not check_password():
-#     st.stop()  # Do not continue if check_password is not True.
+if not check_password():
+    st.stop()  # Do not continue if check_password is not True.
 
-# # Main Streamlit app starts her
+# Main Streamlit app starts here
 
 ################################################### application ######################################################
 
@@ -51,7 +51,7 @@ import streamlit as st
 
 ### --- LOAD DATAFRAME
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
-logo= Image.open('logo.png')
+logo= Image.open('data/logo.png')
 st.set_page_config(page_title="Thermal metrics Dashboard", page_icon=logo, layout="wide")
 
 ################################################### load all indices of Quebec rivers#####################
@@ -143,7 +143,7 @@ df_selection1 = df.query("Riv == @Riv & Station == @station " )
 
 col1, mid, col2 = st.columns([1,2,40])
 with col1:
-    st.image('Logo_bleu.png', width=60)
+    st.image('data/Logo_bleu.png', width=60)
     #st.image(logo, width=50)
 with col2:
     st.title("INDICES THERMIQUES AUX RIVIÈRES DU QUÉBEC " )
@@ -186,7 +186,7 @@ varT = st.sidebar.selectbox(
      "Sélectionner une série temporelle:",
      options = var1)
 
-#### Add new plot of Theorical Gaussian fitting using a,b,c parameters
+################################ Add new plot of Theorical Gaussian fitting using a,b,c parameters ######################
 #add filter of year to plot gaussian fitting for this year
 # x= df_selection1 ["an"].unique()
 # an_selec  = st.sidebar.multiselect(
@@ -239,34 +239,7 @@ fig_final.add_annotation(x=b_info['selec'].values[0], y=b_info['val'].values[0],
                          showarrow=True, arrowcolor="white",ax=90, ay=20)
 
 
-
-    
-    
-
-# fig_final.add_shape(type="line",
-#                     x0=b_info['jour'].values[0], y0=b_info['val'].values[0],
-#                     x1=b_info['selec'].values[0], y1=b_info['val'].values[0],
-#                     line_dash="dash", line_color="red")  # Set arrow style
-
-
-#fig_final.add_trace(go.Scatter(x=[c,c], y=[y[int(len(y)/2)],, a], mode="lines", line=dict(color="green", width=2, dash="dash")))
-
-#fig_final.update_traces(line=dict(color='red'), name='Ajustement Gaussien <br> sur Tmoyenne')
-# fig_final.update_layout(legend=dict(font=dict(color='white')))
-
-
-
-# import matplotlib.pyplot as plt
-# figFinal= plt.figure()
-# plt.plot(d, a*np.exp(-0.5*((d-c)/b)**2), 'r-', label='Ajustement Gaussien \n sur Tmoyenne')
-# # Add legend and axis labels
-# plt.legend(loc='upper left', fontsize=8)  # Change position and size of label
-# plt.xlabel("Jour de l'année")
-# plt.ylabel('Temperature (°C)')
-
-
-
-# Plot 2: Map of index values for all stations
+############################################### Plot 2: Map of index values for all stations ###################################################
 # # Add Scatter Plot
 from plotly.subplots import make_subplots
 # Scatter Plot
@@ -309,32 +282,27 @@ fig1.update_layout(width=800, height=650)#showlegend=False,,width=700, height=60
 fig1.update_xaxes(title_text="Année",row=4, col=1)
 
 
-# Plot 3: Map of index Valeur_Indices for all stations
+######################################################### Plot 3: Map of index Valeur_Indices for all stations #########################################
 ##  add administrative regions:
 import geopandas as gpd
 import plotly.express as px
 #import plotly.graph_objects as go
 
 # Load your shapefile (replace 'regions_shapefile.shp' with your shapefile path)
-regions1 = gpd.read_file('data/qc_regions.shp')
-regions = gpd.read_file('data/ZGIEBV/ZGIEBV.shp')
+regions = gpd.read_file('data/ZGIEBV.shp')
 fixed_strings = [s.encode('latin1').decode('utf-8') for s in regions['ZGIE']]
 regions['ZGIE']=fixed_strings
 regions2= regions[['OBJECTID', 'NO_ZGIEBV', 'ZGIE',
        'ZGIE_KM2', 'Shape_Leng', 'Shape_Area', 'geometry']]
-# Create a trace for the regions_geojson to show only :Add layer
-# Reproject to WGS84 (EPSG:4326)
-#regions_shapefile = regions2.to_crs("EPSG:4326")
-# Convert regions to GeoJSON
-#regions_geojson2 =regions_shapefile.__geo_interface__
-
 # simplify geometry to 1000m accuracy
 regions2["geometry"] = (
     regions2.to_crs(regions2.estimate_utm_crs()).simplify(1000).to_crs(regions2.crs)
 )
 regions2.dropna(axis=0, subset="geometry", how="any", inplace=True)
 regions2.set_index("ZGIE")
+# Reproject to WGS84 (EPSG:4326)
 regions2 = regions2.to_crs(epsg=4326)
+# Convert regions to GeoJSON
 geojson = regions2.__geo_interface__
 
 map_fig1 = px.choropleth_mapbox(regions2,
@@ -350,33 +318,6 @@ map_fig1 = px.choropleth_mapbox(regions2,
                               hover_data={'ZGIE': False},
                               custom_data=['ZGIE'])
 map_fig1.update_traces(hovertemplate='%{customdata[0]}')
-
-# map_fig1 = px.choropleth_mapbox(regions2,
-#                               geojson = regions2.geometry,
-#                               locations = regions2.index,
-#                               color='ZGIE',
-#                               #center={"lat": -33.865143, "lon": 151.209900},
-#                               mapbox_style="carto-positron", 
-#                               zoom=8,
-#                                width = 800,
-#                                height = 500,
-#                               opacity=0.05,  # Adjust opacity as needed # Use the color map
-#                               hover_data={'index': False},
-#                               custom_data=['ZGIE'])
-#                               height = 500)
-
-# map_fig1 = px.choropleth_mapbox(
-#     data_frame=regions_shapefile ,
-#     geojson=regions_geojson2.geometry,
-#     locations=regions_shapefile .index,
-#     color='ZGIE',  # Use 'Regio_NM_' as the categorical variable for coloring
-#     mapbox_style='carto-positron',
-#     zoom=2.5,
-#     opacity=0.05,  # Adjust opacity as needed # Use the color map
-#     hover_data={'ZGIE': False},
-#     custom_data=['ZGIE'])
-# map_fig1.update_traces(hovertemplate='%{customdata[0]}')
-
 
 # Update the layout of the combined figure to set the map center on quebec province
 map_fig1.update_layout(mapbox_center={'lat': 53, 'lon': -70})
@@ -502,29 +443,8 @@ with col1:
 st.subheader("Carte de la variation de l'indice thermique sélectionné")
 st.plotly_chart(map_fig,use_container_width=True)
 
-###############################  Add time serie plot
-# melted_df = pd.melt(df_ts, id_vars=['DateObs','Station','Riv'], value_vars=['Tmax','Tmean','Tmin'], var_name='Var', value_name='Valeur')
-# df_selec1 = melted_df.query("Riv == @Riv & Station == @station & Var== @varT ")
-# df_selec1.drop_duplicates()
-# df_list = [d for _, d in df_selec1.groupby(['Station'])]
-# df_list1 = [df.sort_values(by=['DateObs'])
-#             for df in df_list]
-# df_list2 = [df.set_index('DateObs').resample('D').first().reset_index() 
-#             for df in df_list1]
-# df_list3 = [df.fillna({'Station': df['Station'][0], 'Riv':  df['Riv'][0], 'Var':  df['Var'][0]})
-#             for df in df_list2]
-# df_final= pd.concat(df_list3)
+########################################  add table of indices statistics #################################
 
-# # add plot of time serie
-# st.subheader("Analyse de Séries Temporelles des températures de l'eau")
-# fig4 = px.line(df_final, x='DateObs', y='Valeur', color='Station',height=500, width = 1000,
-#                template="gridon",hover_data=[])
-# fig4.update_traces(connectgaps=False)
-# fig4.update_layout(hovermode=False)
-# st.plotly_chart(fig4,use_container_width=True)
-
-
-#   add table of indices statistics
 import plotly.figure_factory as ff
 st.subheader(":bar_chart: Statistiques descriptives d'indice selectionné")
 # with st.expander():
@@ -536,16 +456,8 @@ st.write(grouped_data.style.background_gradient(cmap="Blues").format({"Maximum a
          "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
          "Valeur_Indice": '{:.2f}'}))
 
-# with st.expander("Tableau descriptive"):
-#     # st.write(grouped_data.style.background_gradient(cmap="Blues"))
-#     st.write(grouped_data.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
-#            "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
-#            "Valeur_Indice": '{:.2f}'}))
-#     csv = grouped_data.to_csv(index = False).encode('utf-8')
-#     st.download_button("Télécharger Tableau", data = csv, file_name = "stats_Indice.csv", mime = "text/csv",
-#                             help = 'Click here to download the data as a CSV file')
 
-#   add table of time series statistics
+#########################################  add table of time series statistics ######################################
 import plotly.figure_factory as ff
 st.subheader(":bar_chart: Statistiques descriptives de la série temporelle")
 tab_stat= allstat_res
@@ -555,7 +467,7 @@ st.write(tab1.style.background_gradient(cmap="Blues").format({'Maximum': '{:.2f}
          'ecartype': '{:.2f}', '25%': '{:.2f}', '50%': '{:.2f}', '75%': '{:.2f}'}))
 
 
-# Add final gaussian figure
+######################################### Add final gaussian figure with table ####################################
 # Display the plot
 col5 = st.columns(1)
 with col5[0]:
