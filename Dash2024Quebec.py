@@ -225,7 +225,7 @@ selected_rows = df_jour[df_jour['y'] == df_jour['val']]
 b_info= selected_rows.tail(1)
 
 fig_final = px.line(x=d, y=y, labels={"x": "Jour de l'année", "y": "Temperature (°C)"},
-                    title='Ajustement Gaussien sur les températures moyennes journalieres',height=500, width = 1000)
+                    title='Ajustement Gaussien sur les températures moyennes journalieres',height=500, width = 2000)
 # Change the color of legend label to white
 fig_final.add_annotation(x=c, y=a, text='La température maximale interannuelle', arrowhead=2, showarrow=True, arrowcolor="white")
 fig_final.add_annotation(x=c, y=0, text="Le jour de l'occurrence de Tmax interannuelle", arrowhead=2, showarrow=True, arrowcolor="white",ax=40, ay=-20)
