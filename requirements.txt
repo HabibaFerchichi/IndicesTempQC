@@ -1,0 +1,11 @@
+geopandas
+Fiona
+geojson
+pyproj
+matplotlib
+numpy
+pandas
+Pillow
+plotly
+streamlit
+openpyxl
