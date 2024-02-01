@@ -225,7 +225,7 @@ selected_rows = df_jour[df_jour['y'] == df_jour['val']]
 b_info= selected_rows.tail(1)
 
 fig_final = px.line(x=d, y=y, labels={"x": "Jour de l'année", "y": "Temperature (°C)"},
-                    title='Ajustement Gaussien sur les températures moyennes journalieres',height=500, width = 2000)
+                    title='Ajustement Gaussien sur les températures moyennes journalieres')
 # Change the color of legend label to white
 fig_final.add_annotation(x=c, y=a, text='La température maximale interannuelle', arrowhead=2, showarrow=True, arrowcolor="white")
 fig_final.add_annotation(x=c, y=0, text="Le jour de l'occurrence de Tmax interannuelle", arrowhead=2, showarrow=True, arrowcolor="white",ax=40, ay=-20)
@@ -472,7 +472,8 @@ st.write(tab1.style.background_gradient(cmap="Blues").format({'Maximum': '{:.2f}
 col5 = st.columns(1)
 with col5[0]:
     st.subheader("Proprietés du régime thermique pour l'année sélectionnée")
-    st.plotly_chart(fig_final)
+    st.plotly_chart(fig_final,use_container_width=True)
+)
 with col5[0]:
     with st.expander("Afficher Données"):
         st.write(gauss_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
