@@ -323,7 +323,7 @@ map_fig1.update_traces(hovertemplate='%{customdata[0]}')
 map_fig1.update_layout(mapbox_center={'lat': 53, 'lon': -70})
 #map_fig1.update_traces(hovertemplate='Region: %{customdata[0]})
 map_fig1.update_layout(showlegend=False,mapbox_style="carto-positron",coloraxis_colorbar=dict(title=''))
-map_fig1.update_layout(coloraxis_colorbar=dict(title='Index Valeur_Indice'))
+map_fig1.update_layout(coloraxis_colorbar=dict(title="Valeur de l'indice"))
 
 # Put a  condition on th color palette < for IPCC red to bue, for for the rest blue to red
 colors=[[0.0, "rgb(103,0,31)"],
@@ -371,7 +371,7 @@ hovertemplate_backup = map_fig.data[0].hovertemplate
 map_fig.update_traces(hovertemplate=hovertemplate_backup)
 
 map_fig.update_layout(showlegend=False,mapbox_style="carto-positron",coloraxis_colorbar=dict(title=''))
-map_fig.update_layout(coloraxis_colorbar=dict(title='Valeur_Indice'))
+map_fig.update_layout(coloraxis_colorbar=dict(title="Valeur de l'indice"))
 
 # map_fig.data[0].hovertemplate = hovertemplate_backup
 for i in range(len(map_fig1.data)):
