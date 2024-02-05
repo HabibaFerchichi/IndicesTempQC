@@ -146,7 +146,7 @@ with col1:
     st.image('data/Logo_bleu.png', width=60)
     #st.image(logo, width=50)
 with col2:
-    st.title("INDICES THERMIQUES AUX RIVIÈRES DU QUÉBEC " )
+    st.title("INDICES THERMIQUES DES RIVIÈRES DU QUÉBEC " )
 st.markdown('<style>div.block-container{padding-top:3rem;}</style>',unsafe_allow_html=True)
 
     
@@ -379,6 +379,8 @@ for i in range(len(map_fig1.data)):
 
 # re-order traces so scatter is at top
 map_fig.data = map_fig.data[::-1]
+
+map_fig.update_layout(coloraxis_colorbar=dict(title='Index value'))
 
 
 ######### Statistics table:  Calculate minimum and maximum Valeur_Indices for selected indices
