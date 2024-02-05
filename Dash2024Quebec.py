@@ -426,14 +426,14 @@ with col2:
    col2.plotly_chart(fig,use_container_width=True)#use_container_width=True
 
 #ADD the download buttons for data
-wqi_df= wqi_df.reset_index()
-wqi_df = wqi_df.drop(columns=["index"])
+indice_df= df_selection.reset_index()
+indice_df = indice_df.drop(columns=["index"])
 with col2:
     with st.expander("Afficher Données"):
-        st.write(wqi_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
+        st.write(indice_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
          "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
          "Valeur_Indice": '{:.2f}'}))
-        csv = wqi_df.to_csv(index = False).encode('utf-8')
+        csv = indice_df.to_csv(index = False).encode('utf-8')
         st.download_button("Télécharger Tableau", data = csv, file_name = "ICTT_Index_info.csv", mime = "text/csv",
                             help = 'Click here to download the data as a CSV file')
 
