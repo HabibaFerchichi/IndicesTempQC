@@ -154,15 +154,15 @@ st.markdown('<style>div.block-container{padding-top:3rem;}</style>',unsafe_allow
 # Plot 1: bar chart of WQI
 # Filter the DataFrame to keep only rows with WQI
 #wqi_df = df_selection1[df_selection1['indice'] == 'wqi']
-wqi_df = df_selection1[df_selection1['Definition'] == "Indice composite de tolérance thermique"]
+#wqi_df = df_selection1[df_selection1['Definition'] == "Indice composite de tolérance thermique"]
 
-if df_selection1.empty:
-    st.warning("No data available for the selected Riv.")
-else:
+#if df_selection1.empty:
+#    st.warning("No data available for the selected Riv.")
+#else:
     # Create bar chart of WQI (fixed and independent of other filters)
-    fig = px.bar(wqi_df, x='an', y='Valeur_Indice', color='Station', barmode='group',
-                 width=600,height=650, template = "seaborn")
-    #st.plotly_chart(fig)
+ #   fig = px.bar(wqi_df, x='an', y='Valeur_Indice', color='Station', barmode='group',
+ #                width=600,height=650, template = "seaborn")
+ #   #st.plotly_chart(fig)
 
 #### Ad other filters
 
@@ -171,7 +171,7 @@ indice = st.sidebar.selectbox("Sélectionner un indice:", options=df_selection1 
 df_selection = df_selection1.query(
     "Definition == @indice")
 
-#add thed efintion of indices
+#add the defintion of indices
 def get_indice_definition(indice_name):
     definition = df_selection[df_selection["Definition"] == indice_name]["Definition"].iloc[0]
     return definition
@@ -185,6 +185,15 @@ var1 = ['Tmax','Tmean','Tmin']
 varT = st.sidebar.selectbox(
      "Sélectionner une série temporelle:",
      options = var1)
+
+# Plot 1: bar chart of selected index
+# Filter the DataFrame to keep only rows with WQI
+if df_selection.empty:
+    st.warning("No data available for the selected Riv.")
+else:
+    # Create bar chart of WQI (fixed and independent of other filters)
+    fig = px.bar(df_selection, x='an', y='Valeur_Indice', color='Station', barmode='group',
+                 width=600,height=650, template = "seaborn")
 
 ################################ Add new plot of Theorical Gaussian fitting using a,b,c parameters ######################
 #add filter of year to plot gaussian fitting for this year
@@ -413,7 +422,7 @@ with col1:
    #st.markdown("### Variation of selected thermal index")
    col1.plotly_chart(fig1,use_container_width=True)
 with col2:
-   st.subheader("Variation de l'Indice Composite de Tolérance Thermique (ICTT)")
+   st.subheader("Variation de l'indice thermique sélectionné"")
    col2.plotly_chart(fig,use_container_width=True)#use_container_width=True
 
 #ADD the download buttons for data
