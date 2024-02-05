@@ -371,7 +371,7 @@ hovertemplate_backup = map_fig.data[0].hovertemplate
 map_fig.update_traces(hovertemplate=hovertemplate_backup)
 
 map_fig.update_layout(showlegend=False,mapbox_style="carto-positron",coloraxis_colorbar=dict(title=''))
-map_fig.update_layout(coloraxis_colorbar=dict(title='Index value'))
+map_fig.update_layout(coloraxis_colorbar=dict(title='Valeur_Indice'))
 
 # map_fig.data[0].hovertemplate = hovertemplate_backup
 for i in range(len(map_fig1.data)):
@@ -380,7 +380,6 @@ for i in range(len(map_fig1.data)):
 # re-order traces so scatter is at top
 map_fig.data = map_fig.data[::-1]
 
-map_fig.update_layout(coloraxis_colorbar=dict(title='Index value'))
 
 
 ######### Statistics table:  Calculate minimum and maximum Valeur_Indices for selected indices
