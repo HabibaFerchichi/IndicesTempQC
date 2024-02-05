@@ -422,7 +422,7 @@ with col1:
    #st.markdown("### Variation of selected thermal index")
    col1.plotly_chart(fig1,use_container_width=True)
 with col2:
-   st.subheader("Variation de l'indice thermique sélectionné"")
+   st.subheader("Variation de l'indice thermique sélectionné")
    col2.plotly_chart(fig,use_container_width=True)#use_container_width=True
 
 #ADD the download buttons for data
