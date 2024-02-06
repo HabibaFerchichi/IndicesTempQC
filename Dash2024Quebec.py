@@ -474,23 +474,21 @@ with col2:
 #ADD the download buttons for data
 df_selection = df_selection.reset_index()
 df_selection = df_selection.drop(columns=["index"])
+df_selection[cols]= df_selection[cols].round(decimals=2).astype(str)
 with col2:
     with st.expander("Afficher Données"):
-        st.write(df_selection.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
-         "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
-         "Valeur_Indice": '{:.2f}'}))
+        st.write(df_selection.style.background_gradient(cmap="Blues"))
         csv = df_selection.to_csv(index = False).encode('utf-8')
         st.download_button("Télécharger Tableau", data = csv, file_name = "ICTT_Index_info.csv", mime = "text/csv",
                             help = 'Click here to download the data as a CSV file')
 
-df_selection = df_selection.reset_index()
-df_selection = df_selection.drop(columns=["index"])
+#df_selection = df_selection.reset_index()
+3#df_selection = df_selection.drop(columns=["index"])
+df_selection[cols]= df_selection[cols].round(decimals=2).astype(str)
 with col1:
   with st.expander("Afficher Données"):
         # st.write(df_selection.style.background_gradient(cmap="Blues"))
-        st.write(df_selection.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
-           "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
-           "Valeur_Indice": '{:.2f}'}))
+        st.write(df_selection.style.background_gradient(cmap="Blues"))
         csv = df_selection.to_csv(index = False).encode('utf-8')
         st.download_button("Télécharger Tableau", data = csv, file_name = "selectedIndex_info.csv", mime = "text/csv",
                             help = 'Click here to download the data as a CSV file')
@@ -506,7 +504,7 @@ st.subheader(":bar_chart: Statistiques descriptives d'indice selectionné")
 # with st.expander():
     #df_sample = df[0:5][["Region","State","City","Category","Sales","Profit","Quantity"]]
 #del(grouped_data[grouped_data.columns[0]])
-grouped_data[cols]= grouped_data[cols].round(decimals=0).astype(str)
+grouped_data[cols]= grouped_data[cols].round(decimals=2).astype(str)
 grouped_data=grouped_data.reset_index()
 grouped_data=grouped_data.rename(columns={'index':'Minimum/Maximum'})
 st.write(grouped_data.style.background_gradient(cmap="Blues"))
@@ -517,7 +515,7 @@ import plotly.figure_factory as ff
 st.subheader(":bar_chart: Statistiques descriptives de la série temporelle")
 tab_stat= allstat_res
 tab1 =pd.DataFrame()
-tab1= tab_stat.query("Riv == @Riv & Station == @station & Variable== @varT")
+tab1 = tab_stat.query("Riv == @Riv & Station == @station & Variable== @varT")
 st.write(tab1.style.background_gradient(cmap="Blues").format({'Maximum': '{:.2f}','Minimum': '{:.2f}','Moyenne': '{:.2f}',
          'ecartype': '{:.2f}', '25%': '{:.2f}', '50%': '{:.2f}', '75%': '{:.2f}'}))
 
