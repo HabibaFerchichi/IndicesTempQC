@@ -251,10 +251,6 @@ for i in range (0,len(var_df)):
       val= var_df.loc[var_df['jour']==selec,'y'].values[0]
       jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': val
                           })
-    else:
-      jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': np.nan
-                           })
-
 df_jour= pd.DataFrame(jour_selec)
 df_jour['diff']= abs(df_jour['y']-df_jour['val'])
 df_jour = df_jour.sort_values('diff')
