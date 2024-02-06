@@ -149,7 +149,7 @@ if all_options:
     options = m ,
     default= m[0])
 #add filter over river and station
-df_selection1 = df_selection1.query("Riv == @Riv & Station == @station " )
+df_selection1 = df_selection1.query("Station == @station " )
 
 
 # # Filter the DataFrame based on selected stations
