@@ -525,11 +525,17 @@ col5 = st.columns(1)
 with col5[0]:
     st.subheader("Proprietés du régime thermique pour l'année sélectionnée")
     st.plotly_chart(fig_final,use_container_width=True)
+#with col5[0]:
+#    with st.expander("Afficher Données"):
+        #st.write(gauss_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
+        # "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
+        # "Valeur_Indice": '{:.2f}'}))
+        #csv = gauss_df.to_csv(index = False).encode('utf-8')
+        #st.download_button("Télécharger Tableau", data = csv, file_name = "RegimeThermique_info.csv", mime = "text/csv",
+        #                    help = 'Click here to download the data as a CSV file')
 with col5[0]:
     with st.expander("Afficher Données"):
-        st.write(gauss_df.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
-         "Moyenne annuelle de température d'air maximale (°C)": '{:.2f}',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
-         "Valeur_Indice": '{:.2f}'}))
+        st.write(gauss_df.style.background_gradient(cmap="Blues"))
         csv = gauss_df.to_csv(index = False).encode('utf-8')
         st.download_button("Télécharger Tableau", data = csv, file_name = "RegimeThermique_info.csv", mime = "text/csv",
                             help = 'Click here to download the data as a CSV file')
