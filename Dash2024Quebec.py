@@ -543,6 +543,8 @@ with col5[0]:
         #csv = gauss_df.to_csv(index = False).encode('utf-8')
         #st.download_button("Télécharger Tableau", data = csv, file_name = "RegimeThermique_info.csv", mime = "text/csv",
         #                    help = 'Click here to download the data as a CSV file')
+# convert to integer values
+gauss_df[cols]= gauss_df[cols].round(decimals=2).astype(str)
 with col5[0]:
     with st.expander("Afficher Données"):
         st.write(gauss_df.style.background_gradient(cmap="Blues"))
