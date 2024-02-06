@@ -170,7 +170,7 @@ with col1:
 with col2:
     st.title("INDICES THERMIQUES DES RIVIÈRES DU QUÉBEC " )
 st.markdown('<style>div.block-container{padding-top:3rem;}</style>',unsafe_allow_html=True)
-
+fig_update_layout(xaxis=list(tickformat=',d'))
     
 
 # Plot 1: bar chart of WQI
