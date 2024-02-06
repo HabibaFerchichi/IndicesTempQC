@@ -497,9 +497,9 @@ df_selection[cols]= df_selection[cols].round(decimals=2).astype(str)
 #        st.download_button("Télécharger Tableau", data = csv, file_name = "selectedIndex_info.csv", mime = "text/csv",
 #                            help = 'Click here to download the data as a CSV file')
 with st.expander("Afficher Données"):
-        st.write(gauss_df.style.background_gradient(cmap="Blues"))
-        csv = gauss_df.to_csv(index = False).encode('utf-8')
-        st.download_button("Télécharger Tableau", data = csv, file_name = "RegimeThermique_info.csv", mime = "text/csv",
+        st.write(df_selection.style.background_gradient(cmap="Blues"))
+        csv = df_selection.to_csv(index = False).encode('utf-8')
+        st.download_button("Télécharger Tableau", data = csv, file_name = "selectedIndex_info.csv", mime = "text/csv",
                             help = 'Click here to download the data as a CSV file')
 
 # Add other figures
