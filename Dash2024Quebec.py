@@ -210,6 +210,7 @@ varT = st.sidebar.selectbox(
 
 # Plot 1: bar chart of selected index
 # Filter the DataFrame to keep only rows with WQI
+df_selection["an"] = df_selection['an'].astype(int)
 if df_selection.empty:
     st.warning("No data available for the selected Riv.")
 else:
