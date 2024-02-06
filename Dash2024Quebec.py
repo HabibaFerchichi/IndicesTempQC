@@ -229,7 +229,7 @@ fig.update_layout(xaxis=dict(tickvals = df_selection["an"].astype(int)))
 #     options = np.append('',x) ,
 #     default= x[0])
 an_selec = st.sidebar.selectbox("Proprietés du régime thermique: Sélectionner une année:", options=df_selection1 ["an"].unique())
-df_selection2 = df_selection1.query(
+df_selection2 = df_selection.query(
     "an == @an_selec")
 #extract data of gaussian parameters
 gauss_df = df_selection2[df_selection2['Indice'].isin(['a','b','c'])]
@@ -340,7 +340,7 @@ fig1.update_yaxes(title_text="Valeur",row=4, col=1)
 fig1.update_layout(width=800, height=650)#showlegend=False,,width=700, height=600
 fig1.update_xaxes(title_text="Année",row=4, col=1)
 # Update x-axis settings
-fig1.update_xaxes(tickmode='linear', tick0=min(df_selection['an']), dtick=1)
+fig1.update_xaxes(tickmode='linear', tick0=min(df_selection['an']))
 
 
 ######################################################### Plot 3: Map of index Valeur_Indices for all stations #########################################
