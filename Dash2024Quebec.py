@@ -128,7 +128,7 @@ m= df_selection1 ["Station"].unique()
 
 station = st.sidebar.multiselect(
     "Sélectionner une station:",
-    options = np.append('',m) ,
+    options = np.append('',m[0]) ,
     default= m[0]
 )
 
