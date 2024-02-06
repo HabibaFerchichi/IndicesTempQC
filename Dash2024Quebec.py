@@ -339,6 +339,7 @@ fig1.update_yaxes(title_text="Précipitation(mm)",  row=3, col=1,autorange='reve
 fig1.update_yaxes(title_text="Valeur",row=4, col=1)
 fig1.update_layout(width=800, height=650)#showlegend=False,,width=700, height=600
 fig1.update_xaxes(title_text="Année",row=4, col=1)
+fig1.update_layout(xaxis=dict(tickvals = df_selection["an"].astype(int)))
 
 
 ######################################################### Plot 3: Map of index Valeur_Indices for all stations #########################################
