@@ -217,6 +217,8 @@ else:
     # Create bar chart of WQI (fixed and independent of other filters)
     fig = px.bar(df_selection, x='an', y='Valeur_Indice', color='Station', barmode='group',
                  width=600,height=650, template = "seaborn")
+fig.update_layout(xaxis = dict(tick0 = 0))
+
 
 ################################ Add new plot of Theorical Gaussian fitting using a,b,c parameters ######################
 #add filter of year to plot gaussian fitting for this year
