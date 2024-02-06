@@ -228,7 +228,7 @@ fig.update_layout(xaxis=dict(tickvals = df_selection["an"].astype(int)))
 #     "Sélectionner une année:",
 #     options = np.append('',x) ,
 #     default= x[0])
-an_selec = st.sidebar.selectbox("Proprietés du régime thermique: Sélectionner une année:", options=df_selection1 ["an"].unique(),default=df_selection1 ["an"].unique())
+an_selec = st.sidebar.selectbox("Proprietés du régime thermique: Sélectionner une année:", options=df_selection1 ["an"].unique())
 df_selection2 = df_selection1.query(
     "an == @an_selec")
 #extract data of gaussian parameters
