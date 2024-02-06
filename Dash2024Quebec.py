@@ -97,7 +97,7 @@ cols=['Valeur_Indice', 'Donnees manquantes(%)',
        "Moyenne annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle des Precipitations totales (mm)"]
 df[cols] = df[cols].astype('float').round(2)
-cols1= ['an', 'Nb_ans', 'NB_obs']
+cols1= ['an', 'Nb_ans', 'Nb_obs']
 df[cols1] = df[cols1].astype('int')
 
 
