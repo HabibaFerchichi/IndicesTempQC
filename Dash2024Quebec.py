@@ -101,7 +101,7 @@ cols1= ['an', 'Nb_ans', 'Nb_obs']
 df[cols1] = df[cols1].astype('int')
 
 # Assuming df is your DataFrame and cols is a list of columns to apply the formatting
-df[cols] = df[cols].apply(lambda x: [f"{val:.2f}".rstrip('0').rstrip('.') if isinstance(val, float) else val for val in x])
+#df[cols] = df[cols].apply(lambda x: [f"{val:.2f}".rstrip('0').rstrip('.') if isinstance(val, float) else val for val in x])
 
 
 
