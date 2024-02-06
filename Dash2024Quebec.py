@@ -92,8 +92,8 @@ cols=['an','Valeur_Indice', 'Nb_ans',
        "Moyenne annuelle des Precipitations totales (mm)",
        'longitude', 'latitude']
 df[cols] = df[cols].astype('float')
-# sort values by river names
-df = df.sort_values("Riv")
+# sort values by river names and years
+df = df.sort_values(["Riv","an"])
 # load stations statistics of all databases
 # with open('results_dic/allriversStat_resFinal.pkl', 'rb') as handle:
 #     allstat_res = pickle.load(handle)
