@@ -210,14 +210,13 @@ varT = st.sidebar.selectbox(
 
 # Plot 1: bar chart of selected index
 # Filter the DataFrame to keep only rows with WQI
-df_selection["an"] = df_selection['an'].astype(int)
+df_selection["an"] = df_selection["an"].round(decimals=0).astype(int)
 if df_selection.empty:
     st.warning("No data available for the selected Riv.")
 else:
     # Create bar chart of WQI (fixed and independent of other filters)
     fig = px.bar(df_selection, x='an', y='Valeur_Indice', color='Station', barmode='group',
                  width=600,height=650, template = "seaborn")
-fig.update_layout(xaxis = dict(tick0 = 0))
 
 
 ################################ Add new plot of Theorical Gaussian fitting using a,b,c parameters ######################
