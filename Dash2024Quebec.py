@@ -525,10 +525,10 @@ st.subheader(":bar_chart: Statistiques descriptives de la série temporelle")
 tab_stat= allstat_res
 cols2=['moyenne', 'ecartype', 'min', '25%',
        '50%', '75%', 'max', 'Nb_ans', 'Donnees manquantes(%)']
-#cols3=['Riv', 'Station', 'an', 'Nb_ans', 'Nb_obs',
+cols3=['Riv', 'Station', 'an', 'Nb_ans', 'Nb_obs',
 #       'NB_obsEstivale']
 tab_stat[cols2]= tab_stat[cols2].round(decimals=2).astype(str)
-#tab_stat[cols3]= tab_stat[cols3].astype(int)
+tab_stat[cols3]= tab_stat[cols3].astype(int)
 
 tab1 =pd.DataFrame()
 tab1 = tab_stat.query("Riv == @Riv & Station == @station & Variable== @varT")
