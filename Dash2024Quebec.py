@@ -138,7 +138,7 @@ if all_options:
     station = st.sidebar.multiselect(
     "Sélectionner une station:",
     options = m ,
-    default= m)
+    default= m[0])
 
 # # Filter the DataFrame based on selected stations
 #df_selection1 = df.query("Riv == @Riv & Station == @station " )
