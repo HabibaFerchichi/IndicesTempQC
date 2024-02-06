@@ -123,7 +123,7 @@ Riv = st.sidebar.selectbox(
     "Sélectionner une rivière:",
     options=df["Riv"].unique())
 
-df_selection1 = df.query("Rivière == @Riv " )
+df_selection1 = df.query("Riv == @Riv " )
 m= df_selection1 ["Station"].unique()
 
 station = st.sidebar.multiselect(
