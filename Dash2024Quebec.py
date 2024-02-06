@@ -527,10 +527,10 @@ cols2=['moyenne', 'ecartype', 'min', '25%',
        '50%', '75%', 'max', 'Nb_ans', 'Donnees manquantes(%)']
 tab_stat[cols2]= tab_stat[cols2].round(decimals=2).astype(str)
 #tab_stat[cols3]= tab_stat[cols3].astype(int).astype(str)
-cols5= ['an','Nb_ans', 'Nb_obs']
-tab_stat[cols5] = tab_stat[cols5].apply(lambda a:a.astype(int),axis=1)
-#tab_stat[cols5] = tab_stat[cols5].round(decimals=0).astype(str)
-#tab_stat['an'] = tab_stat['an'].astype(int)
+#cols5= ['an','Nb_ans', 'Nb_obs']
+#tab_stat[cols5] = tab_stat[cols5].apply(lambda a:a.astype(int),axis=1)
+#tab_stat[[cols5]] = tab_stat[[cols5]].round(decimals=0).astype(str)
+tab_stat[['an','Nb_ans', 'Nb_obs']] = tab_stat[['an','Nb_ans', 'Nb_obs']].astype(int)
 
 
 tab1 =pd.DataFrame()
