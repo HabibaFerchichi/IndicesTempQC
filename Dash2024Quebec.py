@@ -526,11 +526,12 @@ tab_stat= allstat_res
 cols2=['moyenne', 'ecartype', 'min', '25%',
        '50%', '75%', 'max', 'Nb_ans']
 tab_stat[cols2]= tab_stat[cols2].round(decimals=2).astype(str)
-#tab_stat[cols3]= tab_stat[cols3].astype(int).astype(str)
+cols3= ['Nb_obs','Nb_ans','Donnees manquantes(%)']
+tab_stat[cols3]= tab_stat[cols3].astype(int).astype(str)
 tab_stat['an'] = tab_stat['an'].astype(int)
-tab_stat['Nb_obs'] = tab_stat['Nb_obs'].astype(int)
-tab_stat['Nb_ans'] = tab_stat['Nb_ans'].astype(int)
-tab_stat['Donnees manquantes(%)'] = tab_stat['Donnees manquantes(%)'].astype(int)
+#tab_stat['Nb_obs'] = tab_stat['Nb_obs'].astype(int)
+#tab_stat['Nb_ans'] = tab_stat['Nb_ans'].astype(int)
+#tab_stat['Donnees manquantes(%)'] = tab_stat['Donnees manquantes(%)'].astype(int)
 
 
 
