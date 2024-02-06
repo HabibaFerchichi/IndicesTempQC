@@ -506,12 +506,10 @@ st.subheader(":bar_chart: Statistiques descriptives d'indice selectionné")
 # with st.expander():
     #df_sample = df[0:5][["Region","State","City","Category","Sales","Profit","Quantity"]]
 #del(grouped_data[grouped_data.columns[0]])
-grouped_data[cols]= grouped_data[cols].round(decimals=0).astype(object)
+grouped_data[cols]= grouped_data[cols].round(decimals=0).astype(str)
 grouped_data=grouped_data.reset_index()
 grouped_data=grouped_data.rename(columns={'index':'Minimum/Maximum'})
-st.write(grouped_data.style.background_gradient(cmap="Blues").format({"Maximum annuelle de température d'air maximale (°C)": '{:.2f}',
-         "Moyenne annuelle de température d'air maximale (°C)": ',"Moyenne annuelle des Précipitations totales (mm)": '{:.2f}',
-         "Valeur_Indice": '{:.2f}'}))
+st.write(grouped_data.style.background_gradient(cmap="Blues"))
 
 
 #########################################  add table of time series statistics ######################################
