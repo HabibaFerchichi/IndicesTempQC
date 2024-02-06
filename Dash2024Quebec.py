@@ -218,23 +218,47 @@ gauss_df.loc[gauss_df['Indice'].isin(['b','c']),'Valeur_Indice']=gauss_df.loc[ga
 a= gauss_df.loc[gauss_df["Indice"]=='a','Valeur_Indice'].values[0]
 b= gauss_df.loc[gauss_df["Indice"]=='b','Valeur_Indice'].values[0]
 c= gauss_df.loc[gauss_df["Indice"]=='c','Valeur_Indice'].values[0]
-d= np.arange(1,366)
+#d= np.arange(1,366)
+# Plot the fitted curve using Plotly Express
+#y= a*np.exp(-0.5*((d-c)/b)**2)
+#var_df= pd.DataFrame({'jour':d,'y':y})
+#jour_selec=[]
+#for i in range (0,len(var_df)):
+#    j= var_df['jour'][i]
+#    selec= j + b
+#    if selec<366:
+#      val= var_df.loc[var_df['jour']==selec,'y'].values[0]
+#      jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': val})
+
+#df_jour= pd.DataFrame(jour_selec)
+#df_jour['y']= round(df_jour['y'],0)
+#df_jour['val']= round(df_jour['val'],0)
+#selected_rows = df_jour[df_jour['y'] == df_jour['val']]
+#b_info= selected_rows.tail(1)
+
+d= np.arange(1,366,0.1)
 # Plot the fitted curve using Plotly Express
 y= a*np.exp(-0.5*((d-c)/b)**2)
 var_df= pd.DataFrame({'jour':d,'y':y})
+#round values
+var_df['jour']=round(var_df['jour'],1)
 jour_selec=[]
 for i in range (0,len(var_df)):
     j= var_df['jour'][i]
     selec= j + b
     if selec<366:
-      val= var_df.loc[var_df['jour']==selec,'y'].values[0]
-      jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': val})
+      val= var_df.loc[var_df['jour']==56.3,'y'].values[0]
+      jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': val
+                          })
 
 df_jour= pd.DataFrame(jour_selec)
-df_jour['y']= round(df_jour['y'],0)
-df_jour['val']= round(df_jour['val'],0)
-selected_rows = df_jour[df_jour['y'] == df_jour['val']]
-b_info= selected_rows.tail(1)
+df_jour['diff']= abs(df_jour['y']-df_jour['val'])
+df_jour = df_jour.sort_values('diff')
+# df_jour['y']= round(df_jour['y'],1)
+# df_jour['val']= round(df_jour['val'],1)
+# selected_rows = df_jour[df_jour['y'] == df_jour['val']]
+# b_info= selected_rows.tail(1)
+b_info= df_jour.iloc[[0]]
 
 fig_final = px.line(x=d, y=y, labels={"x": "Jour de l'année", "y": "Temperature (°C)"},
                     title='Ajustement Gaussien sur les températures moyennes journalieres')
