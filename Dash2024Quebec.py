@@ -245,11 +245,15 @@ var_df['jour']=round(var_df['jour'],1)
 jour_selec=[]
 for i in range (0,len(var_df)):
     j= var_df['jour'][i]
-    selec= j + b
+    selec = j + b
+    selec = round(selec,1)
     if selec<366:
-      val= var_df.loc[var_df['jour']==56.3,'y'].values[0]
+      val= var_df.loc[var_df['jour']==selec,'y'].values[0]
       jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': val
                           })
+    else:
+      jour_selec.append({'jour': j, 'selec': selec, 'y': var_df['y'][i], 'val': np.nan
+                           })
 
 df_jour= pd.DataFrame(jour_selec)
 df_jour['diff']= abs(df_jour['y']-df_jour['val'])
