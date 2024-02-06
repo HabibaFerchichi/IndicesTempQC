@@ -86,12 +86,22 @@ df= allindices_res1[['Riv', 'Station', 'an','Classe_Climatique','Indice',
        'longitude', 'latitude']]
 # change the name of quality index
 df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","Indice composite de tolérance thermique")
-cols=['an','Valeur_Indice', 'Nb_ans', 
+#cols=['an','Valeur_Indice', 'Nb_ans', 
+#       "Maximum annuelle de temperature d'air maximale (°C)",
+#       "Moyenne annuelle de temperature d'air maximale (°C)",
+#       "Moyenne annuelle des Precipitations totales (mm)",
+#       'longitude', 'latitude']
+#df[cols] = df[cols].astype('float')
+df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","Indice composite de tolérance thermique")
+cols=['Valeur_Indice', 'Donnees manquantes(%)',
        "Maximum annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle de temperature d'air maximale (°C)",
-       "Moyenne annuelle des Precipitations totales (mm)",
-       'longitude', 'latitude']
-df[cols] = df[cols].astype('float')
+       "Moyenne annuelle des Precipitations totales (mm)"]
+df[cols] = df[cols].astype('float').round(2)
+cols1= ['an', 'Nb_ans', 'NB_obs']
+df[cols1] = df[cols1].astype('int')
+
+
 # sort values by river names and years
 df= df.sort_values(['Riv','an'])
 
