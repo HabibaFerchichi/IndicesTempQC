@@ -92,7 +92,6 @@ df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","I
 #       "Moyenne annuelle des Precipitations totales (mm)",
 #       'longitude', 'latitude']
 #df[cols] = df[cols].astype('float')
-df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","Indice composite de tolérance thermique")
 cols=['Valeur_Indice', 'Donnees manquantes(%)',
        "Maximum annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle de temperature d'air maximale (°C)",
