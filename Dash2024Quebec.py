@@ -340,7 +340,7 @@ fig1.update_yaxes(title_text="Valeur",row=4, col=1)
 fig1.update_layout(width=800, height=650)#showlegend=False,,width=700, height=600
 fig1.update_xaxes(title_text="Année",row=4, col=1)
 # Update x-axis settings
-fig.update_xaxes(tickmode='linear', tick0=min(df_selection['an']), dtick=1)
+fig1.update_xaxes(tickmode='linear', tick0=min(df_selection['an']), dtick=1)
 
 
 ######################################################### Plot 3: Map of index Valeur_Indices for all stations #########################################
