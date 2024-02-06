@@ -529,9 +529,6 @@ tab_stat[cols2]= tab_stat[cols2].round(decimals=2).astype(str)
 cols3= ['Nb_obs','Nb_ans','Donnees manquantes(%)']
 tab_stat[cols3]= tab_stat[cols3].round(decimals=0).astype(str)
 tab_stat['an'] = tab_stat['an'].astype(int)
-#tab_stat['Nb_obs'] = tab_stat['Nb_obs'].astype(int)
-#tab_stat['Nb_ans'] = tab_stat['Nb_ans'].astype(int)
-#tab_stat['Donnees manquantes(%)'] = tab_stat['Donnees manquantes(%)'].astype(int)
 
 tab1 =pd.DataFrame()
 tab1 = tab_stat.query("Riv == @Riv & Station == @station & Variable== @varT")
