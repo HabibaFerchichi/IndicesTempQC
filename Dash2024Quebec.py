@@ -447,7 +447,6 @@ for s in stations:
   # Create a DataFrame with rows containing minimum and maximum values
   # Add row names for minimum and maximum values
   dat1.index = ['Minimum_indice' if idx == min_index else 'Maximum_indice' for idx in dat1.index]
-  dat1['max_min']= ['Minimum_indice' if idx == min_index else 'Maximum_indice' for idx in dat1.index] 
   dat2 = dat1.sort_values('Valeur_Indice')
   res.append(dat2)
   
