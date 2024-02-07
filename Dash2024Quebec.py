@@ -219,7 +219,7 @@ fig.update_layout(xaxis=dict(tickvals = df_selection["an"].astype(int)))
 #     options = np.append('',x) ,
 #     default= x[0])
 an_selec = st.sidebar.selectbox("Propriétés du régime thermique: Sélectionner une année:", options=df_selection1 ["an"].unique())
-st.sidebar.info("Le graphique d'ajustement gaussien est affiché pour une station à la fois")
+st.sidebar.info("Le graphique de l'ajustement gaussien sur les températures moyennes journalières est affiché pour une station à la fois.")
 
 df_selection2 = df_selection1.query(
     "an == @an_selec")
@@ -276,7 +276,7 @@ df_jour = df_jour.sort_values('diff')
 b_info= df_jour.iloc[[0]]
 
 fig_final = px.line(x=d, y=y, labels={"x": "Jour de l'année", "y": "Temperature (°C)"},
-                    title='Ajustement Gaussien sur les températures moyennes journalieres')
+                    title='Ajustement Gaussien sur les températures moyennes journalières')
 # Change the color of legend label to white
 fig_final.add_annotation(x=c, y=a, text='La température maximale interannuelle', arrowhead=2, showarrow=True, arrowcolor="white")
 fig_final.add_annotation(x=c, y=0, text="Le jour de l'occurrence de Tmax interannuelle", arrowhead=2, showarrow=True, arrowcolor="white",ax=40, ay=-20)
