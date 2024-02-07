@@ -103,12 +103,12 @@ df[cols1] = df[cols1].astype('int')
 # Assuming df is your DataFrame and cols is a list of columns to apply the formatting
 #df[cols] = df[cols].apply(lambda x: [f"{val:.2f}".rstrip('0').rstrip('.') if isinstance(val, float) else val for val in x])
 
-
-
 # sort values by river names and years
 df= df.sort_values(['Riv','an'])
 df=df.dropna()
 df["an"] = df['an'].astype(int)
+df['Saison_donnees'] = df['Saison_donnees'].map({'Summer_Data': 'Données_Estivale', 'With_WinterData': 'Données_annuelles'})
+
 
 ##### load stations statistics of all databases
 allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
