@@ -219,7 +219,7 @@ fig.update_layout(xaxis=dict(tickvals = df_selection["an"].astype(int)))
 #     options = np.append('',x) ,
 #     default= x[0])
 an_selec = st.sidebar.selectbox("Propriétés du régime thermique: Sélectionner une année:", options=df_selection1 ["an"].unique())
-st.sidebar.info("Le graphique de l'ajustement gaussien sur les températures moyennes journalières est affiché pour une station à la fois.")
+st.sidebar.info("Le graphique de l'ajustement gaussien sur les températures moyennes journalières est affiché pour une station à la fois")
 
 df_selection2 = df_selection1.query(
     "an == @an_selec")
