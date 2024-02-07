@@ -506,7 +506,6 @@ st.subheader(":bar_chart: Statistiques descriptives d'indice selectionné")
 grouped_data[cols]= grouped_data[cols].round(decimals=2).astype(str)
 grouped_data=grouped_data.reset_index()
 grouped_data=grouped_data.rename(columns={'index':'Minimum/Maximum'})
-grouped_data.drop('max_min')
 st.write(grouped_data.style.background_gradient(cmap="Blues"))
 
 
