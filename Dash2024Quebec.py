@@ -107,23 +107,13 @@ df[cols1] = df[cols1].astype('int')
 
 # sort values by river names and years
 df= df.sort_values(['Riv','an'])
-
-# load stations statistics of all databases
-# with open('results_dic/allriversStat_resFinal.pkl', 'rb') as handle:
-#     allstat_res = pickle.load(handle)
-allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
-
-#df = pd.read_excel("ouelle_themalindices_CorrectionClimat.xlsx")
-#del df[df.columns[0]]
-
 df=df.dropna()
-#group by station name and order the ans: must done in the previous code
-# Reset the index
-
-#df["an"] = df['an'].astype(str)
 df["an"] = df['an'].astype(int)
 
-#st.dataframe(df)
+##### load stations statistics of all databases
+allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
+allstat_res['Saison_donnees'] = allstat_res['Saison_donnees'].map({'Summer_Data': 'Données_Estivale', 'With_WinterData': 'Données_annuelles'})
+
 
 # set log for side bar
 #st.sidebar.image("logo.png",caption="INDICES THERMIQUES AUX RIVIÈRES DU QUEBEC",use_column_width ='always')    
