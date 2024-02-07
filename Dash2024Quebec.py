@@ -130,7 +130,7 @@ df_selection1 = df.query("Riv == @Riv " )
 m = df_selection1 ["Station"].unique()
 
 station = st.sidebar.multiselect(
-    "Sélectionner une station:",
+    "Sélectionner une ou plusieurs stations:",
     options = np.append('',m) ,
     default= m[0]
 )
