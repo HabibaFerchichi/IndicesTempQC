@@ -108,12 +108,12 @@ df= df.sort_values(['Riv','an'])
 df=df.dropna()
 df["an"] = df['an'].astype(int)
 df['Saison_donnees'] = df['Saison_donnees'].map({'Summer_Data': 'Données_Estivale', 'With_WinterData': 'Données_annuelles'})
+df["Indice"]= df['Indice'].replace({'wqi':'ICTT'})
 
 
 ##### load stations statistics of all databases
 allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
 allstat_res['Saison_donnees'] = allstat_res['Saison_donnees'].map({'Summer_Data': 'Données_Estivale', 'With_WinterData': 'Données_annuelles'})
-
 
 # set log for side bar
 #st.sidebar.image("logo.png",caption="INDICES THERMIQUES AUX RIVIÈRES DU QUEBEC",use_column_width ='always')    
