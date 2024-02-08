@@ -87,7 +87,9 @@ df= allindices_res1[['Riv', 'Station', 'an','Classe_Climatique','Indice',
 # change the name of quality index
 df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","Indice composite de tolérance thermique")
 df['Definition']= df['Definition'].replace("Pic thermique:la moyenne interannuelle des températures moyennes des plus chauds 30 jours",
-                                           "Pic thermique:la moyenne annuelle des températures moyennes des plus chauds 30 jours)
+                                           "Pic thermique:la moyenne annuelle des températures moyennes des plus chauds 30 jours")
+                                           
+df = df.drop(df[df['Definition']=="Index de saisonnalité des températures"].index)
 
 #cols=['an','Valeur_Indice', 'Nb_ans', 
 #       "Maximum annuelle de temperature d'air maximale (°C)",
