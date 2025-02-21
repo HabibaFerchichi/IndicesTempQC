@@ -58,7 +58,7 @@ st.set_page_config(page_title="Thermal metrics Dashboard", page_icon=logo, layou
 # Load thermal indices of all databases
 # with open('results_dic/thermalindices_finalDF_CorrectionClimat.pkl', 'rb') as handle:
 #     allindices_res = pickle.load(handle)
-allindices_res = pd.read_pickle('results_dic/thermalindices_finalDF_CorrectionClimat.pkl')
+allindices_res = pd.read_pickle('results_pkl/allrivers_thermalIndices.pkl')
 
 #nb rivers
 #len(allindices_res['Riv'].unique())
@@ -117,7 +117,7 @@ df["Indice"]= df['Indice'].replace({'wqi':'ICTT'})
 
 
 ##### load stations statistics of all databases
-allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
+allstat_res = pd.read_pickle('results_pkl/allriversStat_resFinal.pkl')
 allstat_res['Saison_donnees'] = allstat_res['Saison_donnees'].map({'Summer_Data': 'Données_estivales', 'With_WinterData': 'Données_annuelles'})
 
 # set log for side bar
