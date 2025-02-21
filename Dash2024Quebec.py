@@ -83,7 +83,7 @@ df= allindices_res[['Riv', 'Station', 'an','Classe_Climatique','Indice',
        "Moyenne annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle des Precipitations totales (mm)",
        'Donnees manquantes(%)', 'Nb_obs', 'Saison_donnees', 'NB_obsEstivale',
-       'longitude', 'latitude']]
+       'longitude', 'latitude', 'Espèces disponibles']]
 # change the name of quality index
 df['Definition']= df['Definition'].replace("Indice de qualité d'eau adapté","Indice composite de tolérance thermique")
 df['Definition']= df['Definition'].replace("Pic thermique:la moyenne interannuelle des températures moyennes des plus chauds 30 jours",
