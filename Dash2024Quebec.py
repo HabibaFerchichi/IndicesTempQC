@@ -65,7 +65,7 @@ allindices_res = pd.read_pickle('results_pkl/allrivers_thermalIndices.pkl')
 # rename columns in frensh and without accent otherwise affect the sxported csv after
 #change columns names
 #allindices_res.columns
-allindices_res1 = allindices_res.rename(columns={
+#allindices_res1 = allindices_res.rename(columns={
 #                              'StationName':'Station','longitudeT':'longitude', 
 #                              'latitudeT':'latitude', 'year':'an',
 #                              'indices':'Indice','value':'Valeur_Indice','nb_years':'Nb_ans',
