@@ -66,18 +66,18 @@ allindices_res = pd.read_pickle('results_pkl/allrivers_thermalIndices.pkl')
 #change columns names
 #allindices_res.columns
 allindices_res1 = allindices_res.rename(columns={
-                              'StationName':'Station','longitudeT':'longitude', 
-                              'latitudeT':'latitude', 'year':'an',
-                              'indices':'Indice','value':'Valeur_Indice','nb_years':'Nb_ans',
-                              'Quality_ThermalIndices':'Qualite_Indice','Climate_Class':'Classe_Climatique',
-                              'MissingData(%)':'Donnees manquantes(%)','Obsperyear':'Nb_obs',
-                               'Data_season':'Saison_donnees','obs_summer':'NB_obsEstivale',
-                               'definition_fr':'Definition','Qualité_série':'Qualite_serieT',
-                                "Maximum annuelle de température d'air maximale": "Maximum annuelle de temperature d'air maximale (°C)",
-                               "Moyenne annuelle de température d'air maximale":"Moyenne annuelle de temperature d'air maximale (°C)",
-                               "Moyenne annuelle de Précipitation totale":"Moyenne annuelle des Precipitations totales (mm)"
-                               })
-df= allindices_res1[['Riv', 'Station', 'an','Classe_Climatique','Indice',
+#                              'StationName':'Station','longitudeT':'longitude', 
+#                              'latitudeT':'latitude', 'year':'an',
+#                              'indices':'Indice','value':'Valeur_Indice','nb_years':'Nb_ans',
+#                              'Quality_ThermalIndices':'Qualite_Indice','Climate_Class':'Classe_Climatique',
+#                              'MissingData(%)':'Donnees manquantes(%)','Obsperyear':'Nb_obs',
+#                               'Data_season':'Saison_donnees','obs_summer':'NB_obsEstivale',
+#                               'definition_fr':'Definition','Qualité_série':'Qualite_serieT',
+#                                "Maximum annuelle de température d'air maximale": "Maximum annuelle de temperature d'air maximale (°C)",
+#                               "Moyenne annuelle de température d'air maximale":"Moyenne annuelle de temperature d'air maximale (°C)",
+#                               "Moyenne annuelle de Précipitation totale":"Moyenne annuelle des Precipitations totales (mm)"
+#                               })
+df= allindices_res[['Riv', 'Station', 'an','Classe_Climatique','Indice',
        'Valeur_Indice', 'Definition', 'Qualite_Indice', 'Nb_ans', 'Qualite_serieT',
        "Maximum annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle de temperature d'air maximale (°C)",
