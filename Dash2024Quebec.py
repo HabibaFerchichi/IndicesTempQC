@@ -58,26 +58,28 @@ st.set_page_config(page_title="Thermal metrics Dashboard", page_icon=logo, layou
 # Load thermal indices of all databases
 # with open('results_dic/thermalindices_finalDF_CorrectionClimat.pkl', 'rb') as handle:
 #     allindices_res = pickle.load(handle)
-allindices_res = pd.read_pickle('results_pkl/allrivers_thermalIndices.pkl')
+#allindices_res = pd.read_pickle('results_pkl/allrivers_thermalIndices.pkl')
+allindices_res = pd.read_pickle('results_dic/thermalindices_finalDF_CorrectionClimat.pkl')
+
 
 #nb rivers
 #len(allindices_res['Riv'].unique())
 # rename columns in frensh and without accent otherwise affect the sxported csv after
 #change columns names
 #allindices_res.columns
-#allindices_res1 = allindices_res.rename(columns={
-#                              'StationName':'Station','longitudeT':'longitude', 
-#                              'latitudeT':'latitude', 'year':'an',
-#                              'indices':'Indice','value':'Valeur_Indice','nb_years':'Nb_ans',
-#                              'Quality_ThermalIndices':'Qualite_Indice','Climate_Class':'Classe_Climatique',
-#                              'MissingData(%)':'Donnees manquantes(%)','Obsperyear':'Nb_obs',
-#                               'Data_season':'Saison_donnees','obs_summer':'NB_obsEstivale',
-#                               'definition_fr':'Definition','Qualité_série':'Qualite_serieT',
-#                                "Maximum annuelle de température d'air maximale": "Maximum annuelle de temperature d'air maximale (°C)",
-#                               "Moyenne annuelle de température d'air maximale":"Moyenne annuelle de temperature d'air maximale (°C)",
-#                               "Moyenne annuelle de Précipitation totale":"Moyenne annuelle des Precipitations totales (mm)"
-#                               })
-df= allindices_res[['Riv', 'Station', 'an','Classe_Climatique','Indice',
+allindices_res1 = allindices_res.rename(columns={
+                              'StationName':'Station','longitudeT':'longitude', 
+                              'latitudeT':'latitude', 'year':'an',
+                              'indices':'Indice','value':'Valeur_Indice','nb_years':'Nb_ans',
+                              'Quality_ThermalIndices':'Qualite_Indice','Climate_Class':'Classe_Climatique',
+                              'MissingData(%)':'Donnees manquantes(%)','Obsperyear':'Nb_obs',
+                               'Data_season':'Saison_donnees','obs_summer':'NB_obsEstivale',
+                               'definition_fr':'Definition','Qualité_série':'Qualite_serieT',
+                                "Maximum annuelle de température d'air maximale": "Maximum annuelle de temperature d'air maximale (°C)",
+                               "Moyenne annuelle de température d'air maximale":"Moyenne annuelle de temperature d'air maximale (°C)",
+                               "Moyenne annuelle de Précipitation totale":"Moyenne annuelle des Precipitations totales (mm)"
+                               })
+df= allindices_res1[['Riv', 'Station', 'an','Classe_Climatique','Indice',
        'Valeur_Indice', 'Definition', 'Qualite_Indice', 'Nb_ans', 'Qualite_serieT',
        "Maximum annuelle de temperature d'air maximale (°C)",
        "Moyenne annuelle de temperature d'air maximale (°C)",
@@ -117,7 +119,9 @@ df["Indice"]= df['Indice'].replace({'wqi':'ICTT'})
 
 
 ##### load stations statistics of all databases
-allstat_res = pd.read_pickle('results_pkl/allriversStat_resFinal.pkl')
+#allstat_res = pd.read_pickle('results_pkl/allriversStat_resFinal.pkl')
+allstat_res = pd.read_pickle('results_dic/allriversStat_resFinal.pkl')
+
 allstat_res['Saison_donnees'] = allstat_res['Saison_donnees'].map({'Summer_Data': 'Données_estivales', 'With_WinterData': 'Données_annuelles'})
 
 # set log for side bar
