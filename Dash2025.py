@@ -10,6 +10,8 @@ import plotly.express as px  # pip install plotly-express
 import streamlit as st 
 import numpy as np # pip install streamlit
 from PIL import Image
+import pickle
+
 
 import hmac
 import streamlit as st
